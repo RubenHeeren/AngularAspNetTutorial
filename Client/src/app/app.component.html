@@ -1,0 +1,37 @@
+<div class="container d-flex flex-column min-vh-100 justify-content-center align-items-center">
+  <h1>Angular ASP.NET Core Minimal APIs Tutorial</h1>
+
+  <button class="btn btn-lg btn-dark mt-3" (click)="onClickBtnCreateNewPost()">
+    Create New Post
+  </button>
+
+  <div class="mh-500px w-100 overflow-auto d-inline-block mt-5 shadow">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Title</th>
+          <th scope="col">Content</th>
+          <th scope="col">Published</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let post of postService.allPosts; index as i">
+          <th scope="row">{{ post.id }}</th>
+          <td>{{ post.title }}</td>
+          <td>{{ post.content }}</td>
+          <td>{{ post.published }}</td>
+          <td>
+            <button class="btn btn-lg btn-dark me-3" (click)="onClickBtnUpdatePost(post)">
+              Update
+            </button>
+            <button class="btn btn-lg btn-outline-dark" (click)="onClickBtnDeletePost(post)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

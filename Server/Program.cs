@@ -6,6 +6,19 @@ using Server.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CORSPolicy",
+        builder =>
+        {
+            builder
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .WithOrigins("http://localhost:4200", "https://calm-water-04859b403.azurestaticapps.net");
+        });
+});
+
+
 builder.Services.AddDbContext<AppDbContext>(dbContextOptionsBuilder =>
     dbContextOptionsBuilder.UseSqlite(builder.Configuration["ConnectionStrings:DefaultConnection"]));
 
@@ -28,6 +41,8 @@ app.UseSwaggerUI(swaggerUIOptions =>
 });
 
 app.UseHttpsRedirection();
+
+app.UseCors("CORSPolicy");
 
 app.MapPostsEndpoints();
 

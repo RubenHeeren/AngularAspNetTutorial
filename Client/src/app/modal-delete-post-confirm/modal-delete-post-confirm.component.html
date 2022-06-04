@@ -1,0 +1,16 @@
+<div class="modal-header">
+  <h4 class="modal-title">Are you sure you want to delete the post titled "{{ postToDelete.title }}"?</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+  <p>A deletion can not be reverted.</p>
+</div>
+<div class="modal-footer">
+  <p class="text-success" *ngIf="deleteSuccessful">Post deleted!</p>
+  <p class="text-danger" *ngIf="deleteFailed">Failed to delete the post. Check the console for details.</p>
+
+  <button class="btn btn-lg btn-dark" type="button" *ngIf="deleteSuccessful === false"
+    (click)="onClickBtnDelete()">Confirm</button>
+  <button type="button" class="btn btn-lg btn-outline-dark" (click)="activeModal.close('Close click')">{{
+    deleteSuccessful ? 'Close' : 'Cancel' }}</button>
+</div>
