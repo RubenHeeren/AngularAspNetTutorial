@@ -14,7 +14,7 @@ builder.Services.AddCors(options =>
             builder
             .AllowAnyMethod()
             .AllowAnyHeader()
-            .WithOrigins("http://localhost:4200", "https://calm-water-04859b403.azurestaticapps.net");
+            .WithOrigins("http://localhost:4200", "https://gray-moss-0ea0c0703.1.azurestaticapps.net");
         });
 });
 
