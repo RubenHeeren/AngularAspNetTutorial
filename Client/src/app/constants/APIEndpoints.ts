@@ -1,7 +1,7 @@
-import { isDevMode } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 const SERVER_BASE_URL_DEVELOPMENT = 'https://localhost:7230';
-const SERVER_BASE_URL_PRODUCTION = 'https://aspnetcorereacttutorial-aspnetserver.azurewebsites.net';
+const SERVER_BASE_URL_PRODUCTION = 'https://angularaspnetserver.azurewebsites.net';
 
 const BASE_ENDPOINTS = {
   GET_ALL_POSTS: 'posts',
@@ -40,6 +40,6 @@ const PRODUCTION_ENDPOINTS = {
   DELETE_POST: `${SERVER_BASE_URL_PRODUCTION}/${BASE_ENDPOINTS.DELETE_POST}`
 };
 
-const ENDPOINTS_TO_EXPORT = isDevMode() ? DEVELOPMENT_ENDPOINTS : PRODUCTION_ENDPOINTS;
+const ENDPOINTS_TO_EXPORT = environment.production ? PRODUCTION_ENDPOINTS : DEVELOPMENT_ENDPOINTS;
 
 export default ENDPOINTS_TO_EXPORT;
